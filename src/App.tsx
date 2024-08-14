@@ -1,24 +1,24 @@
-import { HashRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
+import Training from './pages/Training';
 
 export function App() {
   return (
-    <Home />
-    // <Routes>
-    //   {/* <Route path="/" element={<Home />} />
-    //   <Route path="*" element={<NotFound />} /> */}
-    // </Routes>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="*" element={<Training />} />
+    </Routes>
   );
 }
 
 export function WrappedApp() {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ChakraProvider>
         <App />
       </ChakraProvider>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
