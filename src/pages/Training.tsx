@@ -1,3 +1,7 @@
+import LoadingSpinner from '@/components/LoadingSpinner';
+import HistoryButton from '@/components/HistoryButton';
+import HistoryDrawer from '@/components/Training/HistoryDrawer';
+import PinInput from '@/components/PinInput';
 import {
   TrainingHistoryService,
   TrainingService,
@@ -6,19 +10,17 @@ import {
   Box,
   Button,
   Center,
-  Circle,
   Flex,
   HStack,
-  keyframes,
-  PinInput,
-  PinInputField,
   ScaleFade,
-  Slide,
-  Spinner,
   useDisclosure,
   VStack,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import RestartButton from '@/components/RestartButton';
+import MatchesCount from '@/components/MatchesCount';
+import PinIndicator from '@/components/PinIndicator';
+import GuessButton from '@/components/GuessButton';
 
 function Training() {
   const [isFinished, setIsFinished] = useState<null | boolean>(null);
@@ -106,107 +108,40 @@ function Training() {
   }, [history]);
 
   return isLoading ? (
-    <Center h={'100%'}>
-      <Spinner
-        w={'7rem'}
-        h={'7rem'}
-        thickness="12px"
-        speed="0.65s"
-        emptyColor="gray.200"
-        color="blue.500"
-        size="xl"
-      />
-    </Center>
+    <LoadingSpinner />
   ) : (
     <>
-      <Slide direction="left" in={isOpen} style={{ zIndex: 10 }}>
-        <Box
-          w={'100%'}
-          h={'100%'}
-          position={'fixed'}
-          style={{ zIndex: -1 }}
-          onClick={onClose}
-        ></Box>
-        <Flex
-          w={'fit-content'}
-          h={'100%'}
-          color="white"
-          bg="grey"
-          shadow="md"
-          p={'10px'}
-        >
-          <VStack pr={'10px'}>
-            {history.map((element) => (
-              <p key={element}>{element}</p>
-            ))}
-          </VStack>
-          <Button alignSelf={'flex-end'} mb={'10px'} onClick={onClose}>
-            Close
-          </Button>
-        </Flex>
-      </Slide>
+      <HistoryDrawer isOpen={isOpen} onClose={onClose} history={history} />
+
       <Center h={'80%'}>
         <VStack>
-          <Circle size="6rem" bg="slategrey" color="white">
-            <ScaleFade initialScale={0.1} in={!isSubmitting}>
-              <Box as="span" fontWeight="bold" fontSize="xx-large">
-                {currentMatches !== null ? currentMatches.toString() : '?'}
-              </Box>
-            </ScaleFade>
-          </Circle>
+          <MatchesCount isSubmitting={isSubmitting} matches={currentMatches} />
           <ScaleFade initialScale={0.1} in={!isSubmitting}>
             <Box as="span" fontWeight="bold" fontSize="x-large">
               Numbers are correct in
             </Box>
             <Center>
-              <HStack zIndex={-1}>
-                <PinInput size={'sm'} value={previousGuess} variant={'filled'}>
-                  <PinInputField />
-                  <PinInputField />
-                  <PinInputField />
-                  <PinInputField />
-                </PinInput>
-              </HStack>
+              <PinIndicator value={previousGuess} />
             </Center>
           </ScaleFade>
 
           {isFinished ? (
             <Box mt={'2rem'}>
-              <Button onClick={onRestart} w={'100%'} colorScheme="yellow">
-                Restart
-              </Button>
+              <RestartButton onRestart={onRestart} />
             </Box>
           ) : (
             <Box>
               <HStack mb={'0.5rem'} mt={'2rem'}>
-                <PinInput
-                  size={'lg'}
-                  value={inputValue}
-                  onChange={(value) => handleInput(value)}
-                >
-                  <PinInputField />
-                  <PinInputField />
-                  <PinInputField />
-                  <PinInputField />
-                </PinInput>
+                <PinInput value={inputValue} onInput={handleInput} />
               </HStack>
 
-              <Button
-                isLoading={isSubmitting}
-                onClick={submitGuess}
-                w={'100%'}
-                colorScheme="green"
-              >
-                Guess
-              </Button>
+              <GuessButton isSubmitting={isSubmitting} onClick={submitGuess} />
             </Box>
           )}
         </VStack>
       </Center>
       <Flex h={'20%'} placeItems={'end'}>
-        <Button m={'10px'} mb={'20px'} colorScheme={'blue'} onClick={onOpen}>
-          History
-        </Button>
+        <HistoryButton onOpen={onOpen} />
       </Flex>
     </>
   );
