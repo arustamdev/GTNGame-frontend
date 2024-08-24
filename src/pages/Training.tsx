@@ -21,16 +21,17 @@ import RestartButton from '@/components/RestartButton';
 import MatchesCount from '@/components/MatchesCount';
 import PinIndicator from '@/components/PinIndicator';
 import GuessButton from '@/components/GuessButton';
+import { useTrainingHistory } from '@/hooks/useTrainingHistory';
 
 function Training() {
   const [isFinished, setIsFinished] = useState<null | boolean>(null);
   const [inputValue, setInputValue] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-  const [history, setHistory] = useState<string[]>([]);
   const [currentMatches, setCurrentMatches] = useState<null | number>(null);
   const [previousGuess, setPreviousGuess] = useState<string>('');
 
+  const { history, setHistory } = useTrainingHistory();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   function handleInput(value: string) {
@@ -84,9 +85,7 @@ function Training() {
   useEffect(() => {
     (async () => {
       const { isFinished } = await TrainingService.getTrainingState();
-      const history = await TrainingHistoryService.getHistory();
       setIsFinished(isFinished);
-      setHistory(history);
 
       if (isFinished) {
         const actualNumber =
@@ -98,14 +97,6 @@ function Training() {
       setIsLoading(false);
     })();
   }, []);
-
-  useEffect(() => {
-    (async () => {
-      if (history.length !== 0) {
-        const res = await TrainingHistoryService.setHistory(history);
-      }
-    })();
-  }, [history]);
 
   return isLoading ? (
     <LoadingSpinner />
