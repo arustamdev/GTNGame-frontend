@@ -55,13 +55,7 @@ function Training() {
     setPreviousGuess(inputValue);
     setCurrentMatches(matches);
 
-    setHistory((history) => {
-      const copy = [...history, `${inputValue} - ${matches}`];
-      if (copy.length > 30) {
-        return copy.slice(1);
-      }
-      return copy;
-    });
+    setHistory((history) => [...history, `${inputValue} - ${matches}`]);
 
     setIsSubmitting(false);
   }
