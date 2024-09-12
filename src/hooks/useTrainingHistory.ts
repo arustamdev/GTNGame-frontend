@@ -13,7 +13,7 @@ function useTrainingHistory() {
       copy = callback;
     }
 
-    if (copy.length > 5) {
+    if (copy.length > 30) {
       setHistoryState(copy.slice(1));
     } else {
       setHistoryState(copy);
