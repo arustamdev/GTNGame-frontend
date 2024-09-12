@@ -8,7 +8,6 @@ import {
 } from '@/services/trainingService';
 import {
   Box,
-  Button,
   Center,
   Flex,
   HStack,
