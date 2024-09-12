@@ -3,12 +3,14 @@ import { ChakraProvider } from '@chakra-ui/react';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Training from './pages/Training';
+import Game from './pages/Game';
 
 export function App() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="*" element={<Training />} />
+      <Route path="/training" element={<Training />} />
+      <Route path="/game" element={<Game />} />
     </Routes>
   );
 }
