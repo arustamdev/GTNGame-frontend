@@ -1,13 +1,6 @@
 import { GuessResult, TrainingState } from '@/types/training';
 import WebApp from '@twa-dev/sdk';
-import axios from 'axios';
-
-const api = axios.create({
-  withCredentials: true,
-});
-
-api.defaults.headers.common['Telegram-Data'] = WebApp.initData;
-//api.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+import api from '@/http';
 
 export class TrainingService {
   static async getTrainingState(): Promise<TrainingState> {
