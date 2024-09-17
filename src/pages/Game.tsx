@@ -1,7 +1,7 @@
-import LoadingSpinner from '@/components/LoadingSpinner';
-import { socket } from '@/socket';
-import { Opponent } from '@/types/game';
 import { useEffect, useState } from 'react';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import socket from '@/socket';
+import { Opponent } from '@/types/game';
 
 function Game() {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +11,7 @@ function Game() {
     socket.emit('findMatch');
 
     function onMatchFound(value: Opponent) {
-      setTemp('You are playing against ' + value.user.username);
+      setTemp(`You are playing against ${value.user.username}`);
       setIsLoading(false);
     }
 

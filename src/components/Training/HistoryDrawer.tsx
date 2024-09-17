@@ -33,15 +33,15 @@ function HistoryDrawer({ isOpen, onClose, history }: HistoryDrawerProps) {
             const numbers = number.split('');
 
             return (
-              <HStack gap={'3px'}>
+              <HStack gap="3px">
                 {numbers.map((n) => (
-                  <Center w={'25px'} h={'25px'} bg="grey" color="white">
+                  <Center w="25px" h="25px" bg="grey" color="white">
                     <Box as="span" fontWeight="bold" fontSize="sm">
                       {n}
                     </Box>
                   </Center>
                 ))}
-                <Circle m={'4px'} size={'27px'} bg="tomato" color="white">
+                <Circle m="4px" size="27px" bg="tomato" color="white">
                   <Box as="span" fontWeight="bold" fontSize="sm">
                     {matches}
                   </Box>
@@ -52,7 +52,7 @@ function HistoryDrawer({ isOpen, onClose, history }: HistoryDrawerProps) {
         </DrawerBody>
 
         <DrawerFooter>
-          <Button alignSelf={'flex-end'} mb={'10px'} onClick={onClose}>
+          <Button alignSelf="flex-end" mb="10px" onClick={onClose}>
             Close
           </Button>
         </DrawerFooter>

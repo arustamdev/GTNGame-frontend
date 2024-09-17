@@ -6,7 +6,7 @@ interface RestartButtonProps {
 
 function RestartButton({ onRestart }: RestartButtonProps) {
   return (
-    <Button onClick={onRestart} w={'100%'} colorScheme="yellow">
+    <Button onClick={onRestart} w="100%" colorScheme="yellow">
       Restart
     </Button>
   );

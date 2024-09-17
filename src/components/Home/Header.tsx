@@ -7,19 +7,17 @@ function Header() {
   const tag = WebApp.initDataUnsafe.user?.username;
 
   return (
-    <>
-      <Card maxW="md">
-        <CardHeader>
-          <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
-            {/* <Avatar name="Name" src="" /> */}
-            <Box>
-              <Heading size="md">{`${firstName} ${lastName}`}</Heading>
-              <Text>{`@${tag}`}</Text>
-            </Box>
-          </Flex>
-        </CardHeader>
-      </Card>
-    </>
+    <Card maxW="md">
+      <CardHeader>
+        <Flex flex="1" gap="4" alignItems="center" flexWrap="wrap">
+          {/* <Avatar name="Name" src="" /> */}
+          <Box>
+            <Heading size="md">{`${firstName} ${lastName}`}</Heading>
+            <Text>{`@${tag}`}</Text>
+          </Box>
+        </Flex>
+      </CardHeader>
+    </Card>
   );
 }
 

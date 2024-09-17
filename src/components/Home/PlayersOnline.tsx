@@ -18,7 +18,7 @@ function PlayersOnline() {
   }, []);
 
   return (
-    <Flex p={'10px'}>
+    <Flex p="10px">
       <Spacer />
       <Text>Players Online: {playersCount}</Text>
     </Flex>

@@ -9,4 +9,4 @@ const socket = io(URL, {
   },
 });
 
-export { socket };
+export default socket;

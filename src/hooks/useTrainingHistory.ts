@@ -1,5 +1,5 @@
-import { TrainingHistoryService } from '@/services/trainingService';
 import { useEffect, useState } from 'react';
+import { TrainingHistoryService } from '@/services/trainingService';
 
 function useTrainingHistory() {
   const [history, setHistoryState] = useState<string[]>([]);

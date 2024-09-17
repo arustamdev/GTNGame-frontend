@@ -5,8 +5,6 @@ import {
   Button,
   useDisclosure,
   Modal,
-  ModalBody,
-  ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
@@ -20,9 +18,9 @@ function Menu() {
 
   return (
     <>
-      <Center h={'60%'}>
+      <Center h="60%">
         <Container>
-          <Stack direction={'column'}>
+          <Stack direction="column">
             <Button colorScheme="teal" onClick={confirmPlayModal.onOpen}>
               Play
             </Button>
@@ -35,10 +33,10 @@ function Menu() {
       <Modal
         isOpen={confirmTrainingModal.isOpen}
         onClose={confirmTrainingModal.onClose}
-        isCentered={true}
+        isCentered
       >
         <ModalOverlay />
-        <ModalContent alignItems={'center'} m={'10px'}>
+        <ModalContent alignItems="center" m="10px">
           <ModalHeader>Enter training mode?</ModalHeader>
           <ModalFooter>
             <Button
@@ -48,8 +46,8 @@ function Menu() {
             >
               No
             </Button>
-            <Link to={'/training'}>
-              <Button w={'100%'} colorScheme="green">
+            <Link to="/training">
+              <Button w="100%" colorScheme="green">
                 Yes, continue
               </Button>
             </Link>
@@ -59,17 +57,17 @@ function Menu() {
       <Modal
         isOpen={confirmPlayModal.isOpen}
         onClose={confirmPlayModal.onClose}
-        isCentered={true}
+        isCentered
       >
         <ModalOverlay />
-        <ModalContent alignItems={'center'} m={'10px'}>
+        <ModalContent alignItems="center" m="10px">
           <ModalHeader>Find match?</ModalHeader>
           <ModalFooter>
             <Button colorScheme="red" mr={3} onClick={confirmPlayModal.onClose}>
               No
             </Button>
-            <Link to={'/game'}>
-              <Button w={'100%'} colorScheme="green">
+            <Link to="/game">
+              <Button w="100%" colorScheme="green">
                 Yes, continue
               </Button>
             </Link>

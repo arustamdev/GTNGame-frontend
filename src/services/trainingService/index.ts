@@ -1,5 +1,5 @@
-import { GuessResult, TrainingState } from '@/types/training';
 import WebApp from '@twa-dev/sdk';
+import { GuessResult, TrainingState } from '@/types/training';
 import api from '@/http';
 
 export class TrainingService {
@@ -12,6 +12,7 @@ export class TrainingService {
     const res = await api.post('/api/training/guess', { number });
     return res.data;
   }
+
   static async restartTraining(): Promise<void> {
     const res = await api.post('/api/training/restart');
   }

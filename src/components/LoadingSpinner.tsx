@@ -6,11 +6,11 @@ interface LoadingSpinnerProps {
 
 function LoadingSpinner({ caption }: LoadingSpinnerProps) {
   return (
-    <Center h={'100%'}>
+    <Center h="100%">
       <VStack>
         <Spinner
-          w={'7rem'}
-          h={'7rem'}
+          w="7rem"
+          h="7rem"
           thickness="12px"
           speed="0.65s"
           emptyColor="gray.200"

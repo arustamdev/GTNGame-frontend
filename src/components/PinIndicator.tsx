@@ -7,7 +7,7 @@ interface PinIndicatorProps {
 function PinIndicator({ value }: PinIndicatorProps) {
   return (
     <HStack style={{ pointerEvents: 'none' }}>
-      <PinInput size={'sm'} value={value} variant={'filled'}>
+      <PinInput size="sm" value={value} variant="filled">
         <PinInputField tabIndex={-1} />
         <PinInputField tabIndex={-1} />
         <PinInputField tabIndex={-1} />

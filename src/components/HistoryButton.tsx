@@ -6,7 +6,7 @@ interface HistoryButtonProps {
 
 function HistoryButton({ onOpen }: HistoryButtonProps) {
   return (
-    <Button m={'10px'} mb={'20px'} colorScheme={'blue'} onClick={onOpen}>
+    <Button m="10px" mb="20px" colorScheme="blue" onClick={onOpen}>
       History
     </Button>
   );
