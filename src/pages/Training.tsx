@@ -1,11 +1,3 @@
-import LoadingSpinner from '@/components/LoadingSpinner';
-import HistoryButton from '@/components/HistoryButton';
-import HistoryDrawer from '@/components/Training/HistoryDrawer';
-import PinInput from '@/components/PinInput';
-import {
-  TrainingHistoryService,
-  TrainingService,
-} from '@/services/trainingService';
 import {
   Box,
   Center,
@@ -16,11 +8,19 @@ import {
   VStack,
 } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
+import LoadingSpinner from '@/components/LoadingSpinner';
+import HistoryButton from '@/components/HistoryButton';
+import HistoryDrawer from '@/components/Training/HistoryDrawer';
+import PinInput from '@/components/PinInput';
+import {
+  TrainingHistoryService,
+  TrainingService,
+} from '@/services/trainingService';
 import RestartButton from '@/components/RestartButton';
 import MatchesCount from '@/components/MatchesCount';
 import PinIndicator from '@/components/PinIndicator';
-import GuessButton from '@/components/GuessButton';
 import { useTrainingHistory } from '@/hooks/useTrainingHistory';
+import SubmitButton from '@/components/SubmitButton';
 
 function Training() {
   const [isFinished, setIsFinished] = useState<null | boolean>(null);
@@ -39,7 +39,7 @@ function Training() {
 
   async function submitGuess() {
     if (inputValue.length !== 4) {
-      //TODO:
+      // TODO:
       // indicate error in UI
       return;
     }
@@ -97,7 +97,7 @@ function Training() {
     <>
       <HistoryDrawer isOpen={isOpen} onClose={onClose} history={history} />
 
-      <Center h={'80%'}>
+      <Center h="80%">
         <VStack>
           <MatchesCount isSubmitting={isSubmitting} matches={currentMatches} />
           <ScaleFade initialScale={0.1} in={!isSubmitting}>
@@ -110,21 +110,23 @@ function Training() {
           </ScaleFade>
 
           {isFinished ? (
-            <Box mt={'2rem'}>
+            <Box mt="2rem">
               <RestartButton onRestart={onRestart} />
             </Box>
           ) : (
             <Box>
-              <HStack mb={'0.5rem'} mt={'2rem'}>
+              <HStack mb="0.5rem" mt="2rem">
                 <PinInput value={inputValue} onInput={handleInput} />
               </HStack>
 
-              <GuessButton isSubmitting={isSubmitting} onClick={submitGuess} />
+              <SubmitButton isSubmitting={isSubmitting} onClick={submitGuess}>
+                Guess
+              </SubmitButton>
             </Box>
           )}
         </VStack>
       </Center>
-      <Flex h={'20%'} placeItems={'end'}>
+      <Flex h="20%" placeItems="end">
         <HistoryButton onOpen={onOpen} />
       </Flex>
     </>
