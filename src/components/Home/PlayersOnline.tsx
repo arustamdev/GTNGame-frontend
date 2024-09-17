@@ -1,13 +1,13 @@
 import { Flex, Spacer, Text } from '@chakra-ui/react';
 import { useEffect, useState } from 'react';
-import { socket } from '@/socket';
+import socket from '@/socket';
 
 function PlayersOnline() {
   const [playersCount, setPlayersCount] = useState(0);
 
   useEffect(() => {
     function onPlayersOnline(value: number) {
-      setPlayersCount((prev) => value);
+      setPlayersCount(value);
     }
 
     socket.on('playersOnline', onPlayersOnline);

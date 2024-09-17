@@ -1,6 +1,6 @@
 import WebApp from '@twa-dev/sdk';
 
-export class GameHistoryService {
+export default class GameHistoryService {
   static getHistory(): Promise<string[]> {
     return new Promise((resolve, reject) => {
       WebApp.CloudStorage.getItem('gameHistory', (error, result) => {

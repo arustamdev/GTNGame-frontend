@@ -7,11 +7,7 @@ interface PinInputProps {
 
 function PinInput({ value, onInput }: PinInputProps) {
   return (
-    <PinInputChakra
-      size="lg"
-      value={value}
-      onChange={(value) => onInput(value)}
-    >
+    <PinInputChakra size="lg" value={value} onChange={(v) => onInput(v)}>
       <PinInputField />
       <PinInputField />
       <PinInputField />

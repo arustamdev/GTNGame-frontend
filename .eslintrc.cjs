@@ -23,5 +23,8 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 0,
     'import/extensions': 0,
+    'react/no-array-index-key': 0,
+    'react/jsx-no-bind': 0,
+    'max-classes-per-file': 1,
   },
 };

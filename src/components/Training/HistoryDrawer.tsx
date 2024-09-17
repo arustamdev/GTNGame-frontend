@@ -28,14 +28,20 @@ function HistoryDrawer({ isOpen, onClose, history }: HistoryDrawerProps) {
         <DrawerHeader>History</DrawerHeader>
 
         <DrawerBody>
-          {history.map((element) => {
+          {history.map((element, indHistory) => {
             const [number, matches] = element.split(' - ');
             const numbers = number.split('');
 
             return (
-              <HStack gap="3px">
-                {numbers.map((n) => (
-                  <Center w="25px" h="25px" bg="grey" color="white">
+              <HStack key={indHistory} gap="3px">
+                {numbers.map((n, indNumber) => (
+                  <Center
+                    key={indNumber}
+                    w="25px"
+                    h="25px"
+                    bg="grey"
+                    color="white"
+                  >
                     <Box as="span" fontWeight="bold" fontSize="sm">
                       {n}
                     </Box>

@@ -1,7 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 import Home from './pages/Home';
-import NotFound from './pages/NotFound';
 import Training from './pages/Training';
 import Game from './pages/Game';
 

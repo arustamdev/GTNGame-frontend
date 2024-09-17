@@ -14,7 +14,7 @@ export class TrainingService {
   }
 
   static async restartTraining(): Promise<void> {
-    const res = await api.post('/api/training/restart');
+    await api.post('/api/training/restart');
   }
 }
 

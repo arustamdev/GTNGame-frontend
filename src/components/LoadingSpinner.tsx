@@ -4,6 +4,10 @@ interface LoadingSpinnerProps {
   caption?: string;
 }
 
+const defaultProps: LoadingSpinnerProps = {
+  caption: '',
+};
+
 function LoadingSpinner({ caption }: LoadingSpinnerProps) {
   return (
     <Center h="100%">
@@ -26,5 +30,7 @@ function LoadingSpinner({ caption }: LoadingSpinnerProps) {
     </Center>
   );
 }
+
+LoadingSpinner.defaultProps = defaultProps;
 
 export default LoadingSpinner;

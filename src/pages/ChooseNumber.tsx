@@ -1,19 +1,11 @@
-import { Box, Center, HStack, useDisclosure, VStack } from '@chakra-ui/react';
-import { useEffect, useState } from 'react';
+import { Box, Center, HStack, VStack } from '@chakra-ui/react';
+import { useState } from 'react';
 import PinInput from '@/components/PinInput';
-import {
-  TrainingHistoryService,
-  TrainingService,
-} from '@/services/trainingService';
-import GuessButton from '@/components/SubmitButton';
-import { useTrainingHistory } from '@/hooks/useTrainingHistory';
 import SubmitButton from '@/components/SubmitButton';
 
 function ChooseNumber() {
   const [inputValue, setInputValue] = useState<string>('');
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
-
-  const { history, setHistory } = useTrainingHistory();
 
   function handleInput(value: string) {
     setInputValue(value);

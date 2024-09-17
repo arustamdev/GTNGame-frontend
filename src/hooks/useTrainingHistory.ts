@@ -22,8 +22,8 @@ function useTrainingHistory() {
 
   useEffect(() => {
     (async () => {
-      const history = await TrainingHistoryService.getHistory();
-      setHistoryState((prev) => history);
+      const h = await TrainingHistoryService.getHistory();
+      setHistoryState(h);
       setInitialized(true);
     })();
   }, []);
@@ -34,9 +34,9 @@ function useTrainingHistory() {
         await TrainingHistoryService.setHistory(history);
       }
     })();
-  }, [history]);
+  }, [history, initialized]);
 
   return { history, setHistory };
 }
 
-export { useTrainingHistory };
+export default useTrainingHistory;

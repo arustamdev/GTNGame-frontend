@@ -19,7 +19,7 @@ import {
 import RestartButton from '@/components/RestartButton';
 import MatchesCount from '@/components/MatchesCount';
 import PinIndicator from '@/components/PinIndicator';
-import { useTrainingHistory } from '@/hooks/useTrainingHistory';
+import useTrainingHistory from '@/hooks/useTrainingHistory';
 import SubmitButton from '@/components/SubmitButton';
 
 function Training() {
@@ -54,7 +54,7 @@ function Training() {
     setPreviousGuess(inputValue);
     setCurrentMatches(matches);
 
-    setHistory((history) => [...history, `${inputValue} - ${matches}`]);
+    setHistory((h) => [...h, `${inputValue} - ${matches}`]);
 
     setIsSubmitting(false);
   }
@@ -77,10 +77,10 @@ function Training() {
 
   useEffect(() => {
     (async () => {
-      const { isFinished } = await TrainingService.getTrainingState();
-      setIsFinished(isFinished);
+      const { isFinished: finished } = await TrainingService.getTrainingState();
+      setIsFinished(finished);
 
-      if (isFinished) {
+      if (finished) {
         const actualNumber =
           await TrainingHistoryService.getTrainingActualNumber();
         setPreviousGuess(actualNumber);
