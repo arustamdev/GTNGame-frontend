@@ -1,5 +1,18 @@
 import WebApp from '@twa-dev/sdk';
 
+import api from '@/http';
+
+export class GameService {
+  static async setGuessNumber(number: string): Promise<number> {
+    const res = await api
+      .post('/api/game/setGuessNumber', { number })
+      .catch((error) => {
+        return error.response.status;
+      });
+    return res.status;
+  }
+}
+
 export default class GameHistoryService {
   static getHistory(): Promise<string[]> {
     return new Promise((resolve, reject) => {

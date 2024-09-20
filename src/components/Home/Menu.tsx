@@ -61,12 +61,12 @@ function Menu() {
       >
         <ModalOverlay />
         <ModalContent alignItems="center" m="10px">
-          <ModalHeader>Find match?</ModalHeader>
+          <ModalHeader>Choose your number</ModalHeader>
           <ModalFooter>
             <Button colorScheme="red" mr={3} onClick={confirmPlayModal.onClose}>
               No
             </Button>
-            <Link to="/game">
+            <Link to="/chooseNumber">
               <Button w="100%" colorScheme="green">
                 Yes, continue
               </Button>
